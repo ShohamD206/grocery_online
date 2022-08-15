@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <script src="http://localhost:35729/livereload.js"></script>
 
-
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -32,8 +31,11 @@
 	<div class="breadcrumb_dress">
 		<div class="container">
 			<ul>
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
-					<i>/</i></li>
+				<li>
+					<a th:href="@{/home}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+					<i>/</i>
+				</li>
+
 				<li>Contact Us</li>
 			</ul>
 		</div>
