@@ -1,7 +1,9 @@
 package com.marktProject.GroceryMarket.controller;
 
 import com.marktProject.GroceryMarket.model.Contact;
+import com.marktProject.GroceryMarket.service.ContactService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,6 +16,9 @@ import javax.validation.Valid;
 @Controller
 @Slf4j
 public class ContactController {
+
+    @Autowired
+    ContactService contactService;
 
     @GetMapping("/contact")
     public String displayContactPage(Model model) {
@@ -30,6 +35,8 @@ public class ContactController {
             return "contact.html";
         }
 
-        return "redirect:contact";
+        contactService.createContact(contact);
+
+        return "redirect:/contact";
     }
 }

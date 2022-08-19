@@ -91,25 +91,30 @@
 
 				<!-- Contact Form -->
 				<div class="col-md-6 contact-right mt-md-0 mt-5 ps-lg-0">
+
+					<ul>
+						<li class="alert alert-danger"
+							role="alert"
+							th:each="error : ${#fields.errors('contact.*')}"
+							th:text="${error}">
+						</li>
+					</ul>
+
+
 					<form method="post" class="signin-form" th:action="@{/sendMsg}" th:object="${contact}">
 
 						<div class="input-grids">
-							<input type="text" name="w3lName" id="w3lName" placeholder="Your Name*"
-								   class="contact-input" required="" th:field="*{name}"/>
+							<input type="text" placeholder="Your Name*" class="contact-input" th:field="*{name}"/>
 
-							<input type="email" name="w3lSender" id="w3lSender" placeholder="Your Email*"
-								   class="contact-input" required="" th:field="*{email}"/>
+							<input type="email" placeholder="Your Email*" class="contact-input" th:field="*{email}"/>
 
-							<input type="text" name="w3lWebsite" id="w3lWebsite" placeholder="Phone Number*"
-								   class="contact-input" required="" th:field="*{mobileNum}"/>
+							<input type="text" placeholder="Phone Number*" class="contact-input" th:field="*{mobileNum}"/>
 
-							<input type="text" name="w3lSubect" id="w3lSubect" placeholder="Subject*"
-								   class="contact-input" required="" th:field="*{subject}"/>
-
+							<input type="text" placeholder="Subject*" class="contact-input" th:field="*{subject}"/>
 						</div>
+
 						<div class="form-input">
-								<textarea name="w3lMessage" id="w3lMessage" placeholder="Type your message here*"
-										  required="" th:field="*{message}"></textarea>
+								<textarea placeholder="Type your message here*" th:field="*{message}"></textarea>
 						</div>
 
 						<button class="btn btn-style">Send Message</button>
