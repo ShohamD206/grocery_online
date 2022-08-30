@@ -11,10 +11,6 @@
 <div class="header" id="home1">
   <div class="container">
     <div class="d-flex align-items-center justify-content-between">
-      <!-- login -->
-      <div class="w3l_login">
-        <a href="#myModal12" data-bs-toggle="modal" data-bs-target="#myModal12"><i class="fas fa-user"></i></a>
-      </div>
       <!-- logo -->
       <div class="w3l_logo text-center ml-auto">
         <h1><a th:href="@{/home}">Grocery Mart<span>Online Grocery Shopping</span></a></h1>
@@ -58,20 +54,27 @@
       <div class="modal-header border-0">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
       <div class="row modal-body">
         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
                     type="button" role="tab" aria-controls="home" aria-selected="true">Login</button>
           </li>
+
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                     type="button" role="tab" aria-controls="profile" aria-selected="false">Register</button>
           </li>
         </ul>
+
         <div class="tab-content p-0" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+            <!-- LOGIN TAB -->
+
             <div class="register">
+
               <form action="#" method="post">
                 <input name="Email" placeholder="Email Address" type="text" required="">
                 <input name="Password" placeholder="Password" type="password" required="">
@@ -79,27 +82,37 @@
                   <input type="submit" value="Sign in">
                 </div>
               </form>
+
             </div>
+
           </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="register">
-              <form action="#" method="post">
-                <input placeholder="Name" name="Name" type="text" required="">
-                <input placeholder="Email Address" name="Email" type="email" required="">
-                <input placeholder="Password" name="Password" type="password" required="">
-                <input placeholder="Confirm Password" name="Password" type="password" required="">
-                <div class="sign-up">
-                  <input type="submit" value="Create Account">
-                </div>
-              </form>
-            </div>
-          </div>
+
+<!--          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">-->
+<!--            &lt;!&ndash; REGISTER TAB &ndash;&gt;-->
+<!--            <div class="register">-->
+
+<!--&lt;!&ndash;              <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('registration.*')}" th:text="${error}" />&ndash;&gt;-->
+<!--&lt;!&ndash;              </ul>&ndash;&gt;-->
+
+<!--              <form method="post" >-->
+<!--                <input placeholder="Name" th:field="*{name}" name="Name" type="text" required="">-->
+<!--                <input placeholder="Email Address" th:field="*{email}" name="Email" type="email" required="">-->
+<!--                <input placeholder="Password" name="Password" th:field="*{password}" type="password" required="">-->
+<!--                &lt;!&ndash; <input placeholder="Confirm Password" name="Password" type="password" required=""> &ndash;&gt;-->
+<!--                <div class="sign-up">-->
+<!--                  <input type="submit" value="Create Account">-->
+<!--                </div>-->
+<!--              </form>-->
+
+<!--            </div>-->
+<!--          </div>-->
+
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- header modal -->
 
 </body>
 </html>
