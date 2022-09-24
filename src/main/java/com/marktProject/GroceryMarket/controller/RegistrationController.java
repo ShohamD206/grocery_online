@@ -30,6 +30,7 @@ public class RegistrationController {
     public String registerUser(Model model, @Valid @ModelAttribute("registration") Registration registration, Errors errors) {
 
         if (errors.hasErrors()) {
+            log.info("registration form validation failed : " + errors);
             return "registration.html";
         }
 

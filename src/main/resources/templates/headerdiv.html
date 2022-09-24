@@ -10,16 +10,32 @@
 <!-- top header White header -->
 <div class="header" id="home1">
   <div class="container">
+
     <div class="d-flex align-items-center justify-content-between">
+
       <!-- logo -->
-      <div class="w3l_logo text-center ml-auto">
-        <h1><a th:href="@{/home}">Grocery Mart<span>Online Grocery Shopping</span></a></h1>
+      <div class="w3l_logo text-center">
+        <h1><a th:href="@{/home}">N&S Market<span>Online Market Shopping</span></a></h1>
       </div>
+
+
+      <!-- cart -->
+      <div class="cart cart box_1">
+        <form action="#" method="post" class="last">
+          <input type="hidden" name="cmd" value="_cart" />
+          <input type="hidden" name="display" value="1" />
+          <button class="w3view-cart" type="submit" name="submit" value=""><i
+                  class="fas fa-shopping-bag"></i></button>
+        </form>
+      </div>
+
+
       <!-- search -->
       <div class="header-search position-absolute">
         <div class="search-right mx-lg-2">
           <a href="#search" class="btn search-btn p-0" title="search">
             <i class="fas fa-search"></i></a>
+
           <!-- search popup -->
           <div id="search" class="pop-overlay">
             <div class="popup">
@@ -33,86 +49,12 @@
           </div>
         </div>
       </div>
-      <!-- cart -->
-      <div class="cart cart box_1">
-        <form action="#" method="post" class="last">
-          <input type="hidden" name="cmd" value="_cart" />
-          <input type="hidden" name="display" value="1" />
-          <button class="w3view-cart" type="submit" name="submit" value=""><i
-                  class="fas fa-shopping-bag"></i></button>
-        </form>
-      </div>
+
     </div>
   </div>
 </div>
+
 <!-- //top header -->
-
-<!-- header modal signup form -->
-<div class="modal fade" id="myModal12" tabindex="-1" aria-labelledby="myModal12" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <div class="row modal-body">
-        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                    type="button" role="tab" aria-controls="home" aria-selected="true">Login</button>
-          </li>
-
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                    type="button" role="tab" aria-controls="profile" aria-selected="false">Register</button>
-          </li>
-        </ul>
-
-        <div class="tab-content p-0" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-            <!-- LOGIN TAB -->
-
-            <div class="register">
-
-              <form action="#" method="post">
-                <input name="Email" placeholder="Email Address" type="text" required="">
-                <input name="Password" placeholder="Password" type="password" required="">
-                <div class="sign-up">
-                  <input type="submit" value="Sign in">
-                </div>
-              </form>
-
-            </div>
-
-          </div>
-
-<!--          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">-->
-<!--            &lt;!&ndash; REGISTER TAB &ndash;&gt;-->
-<!--            <div class="register">-->
-
-<!--&lt;!&ndash;              <ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('registration.*')}" th:text="${error}" />&ndash;&gt;-->
-<!--&lt;!&ndash;              </ul>&ndash;&gt;-->
-
-<!--              <form method="post" >-->
-<!--                <input placeholder="Name" th:field="*{name}" name="Name" type="text" required="">-->
-<!--                <input placeholder="Email Address" th:field="*{email}" name="Email" type="email" required="">-->
-<!--                <input placeholder="Password" name="Password" th:field="*{password}" type="password" required="">-->
-<!--                &lt;!&ndash; <input placeholder="Confirm Password" name="Password" type="password" required=""> &ndash;&gt;-->
-<!--                <div class="sign-up">-->
-<!--                  <input type="submit" value="Create Account">-->
-<!--                </div>-->
-<!--              </form>-->
-
-<!--            </div>-->
-<!--          </div>-->
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>

@@ -18,9 +18,12 @@ public class Registration {
     @Email(message = "Please provide a valid Email")
     private String email;
 
+    @NotBlank(message = "Required phone number!")
+    @Pattern(regexp = "([0-9]{10})", message = "Mobile number must be 10 digits!")
+    private String phone;
+
     @NotBlank(message = "Required password!")
-    @Size(min = 6, message = "Password must be 6 characters at least!")
-    // @Pattern(regexp = "^(?=.*/d)(?=.*[a-z])(?=.*[A-Z])", message = "Password must contain: Uppercase, Lowercase, Number")
+    @Pattern(regexp = "([0-9]{6})", message = "Password must contain 6 characters at least")
     private String password;
 
 }
