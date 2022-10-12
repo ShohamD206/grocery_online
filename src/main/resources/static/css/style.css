@@ -3923,7 +3923,7 @@ fieldset:disabled .btn {
   position: absolute;
   z-index: 1000;
   display: none;
-  min-width: 10rem;
+  min-width: 14rem;
   padding: 0.5rem 0;
   margin: 0;
   font-size: 1rem;
@@ -25996,3 +25996,23 @@ ul.social-icons-contact li a {
             height: 100%;
         }
     }
+
+    .dropdz {
+    z-index: 1055;
+    }
+
+    /* //error section */
+    .page_404  img{
+        width:100%;
+    }
+
+    .four_zero_four_bg{
+        background-image: url(/assets/images/noresult.gif);
+        height: 400px;
+        background-position: center;
+     }
+
+    .contant_box_404{
+        margin-top: 100px;
+    }
+    /* //error section */

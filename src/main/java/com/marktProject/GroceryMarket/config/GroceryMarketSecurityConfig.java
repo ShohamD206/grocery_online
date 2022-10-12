@@ -24,12 +24,15 @@ public class GroceryMarketSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity.authorizeRequests()
-                .mvcMatchers("/home").authenticated()
+        httpSecurity.csrf().disable().authorizeRequests()
+                .mvcMatchers("/home").permitAll()
                 .mvcMatchers("/about").permitAll()
                 .mvcMatchers("/contact").permitAll()
+                .mvcMatchers("/dash").authenticated()
                 .and().formLogin()
-                .loginPage("/login").defaultSuccessUrl("/home").permitAll()
+                .loginPage("/login").defaultSuccessUrl("/dash").failureUrl("/login?error=true").permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
                 .and().httpBasic();
 
         return httpSecurity.build();
@@ -37,7 +40,9 @@ public class GroceryMarketSecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
+
         List<UserDetails> userDetails = new ArrayList<>();
+
         userDetails.add(
                 User.withUsername("user")
                         .passwordEncoder(passwordEncoder() :: encode)

@@ -45,6 +45,9 @@
 
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
+                                    <li class="alert alert-danger" role="alert" th:if="${!#strings.isEmpty(message)}"
+                                        th:text="${message}"></li>
+
                                     <div class="form-outline mb-4">
                                         <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="Email address"/>
                                     </div>

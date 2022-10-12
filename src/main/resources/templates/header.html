@@ -64,11 +64,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/loginn}">LOGIN</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/registration}">Register NOW!</a>
+                        <a class="nav-link" th:href="@{/dash}" sec:authorize="isAuthenticated()">Dashboard</a>
                     </li>
                 </ul>
             </div>
