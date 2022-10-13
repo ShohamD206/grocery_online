@@ -22,20 +22,23 @@ public class GroceryMarketSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        httpSecurity.csrf().disable().authorizeRequests()
+        http.csrf().ignoringAntMatchers("/saveMsg", "/h2-console/**").and().authorizeRequests()
                 .mvcMatchers("/home").permitAll()
                 .mvcMatchers("/about").permitAll()
                 .mvcMatchers("/contact").permitAll()
                 .mvcMatchers("/dash").authenticated()
+                .mvcMatchers("/h2-console/**").permitAll()
                 .and().formLogin()
                 .loginPage("/login").defaultSuccessUrl("/dash").failureUrl("/login?error=true").permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
+                .logout().logoutSuccessUrl("/login?logout=true")
+                .invalidateHttpSession(true).permitAll()
                 .and().httpBasic();
 
-        return httpSecurity.build();
+        http.headers().frameOptions().disable();
+        return http.build();
     }
 
     @Bean

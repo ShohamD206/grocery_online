@@ -8,64 +8,82 @@
 </head>
 <body>
 
-<!-- top header White header -->
+<!-- ~~~~~~~~~~~~~~~~~ White Header - Login, Logo, Search & Cart ~~~~~~~~~~~~~~~~~ -->
+
 <div class="header">
   <div class="container">
-
     <div class="d-flex align-items-center justify-content-between">
 
-      <!-- login -->
+
+      <!-- login Drop-down menu -->
       <div class="w3l_login navbar ">
 
         <div class="dropdown nav-item">
-
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-user"></i>
           </button>
           <ul class="dropdown-menu dropdz" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login / Sign Up</a></li>
-            <li><a class="dropdown-item" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a></li>
+            <li>
+              <a class="dropdown-item" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login/Sign-Up</a>
+            </li>
+            <li>
+              <a class="dropdown-item" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+            </li>
           </ul>
-
         </div>
+
       </div>
+      <!-- //login Drop-down menu -->
 
       <!-- logo -->
       <div class="w3l_logo text-center">
-        <h1><a th:href="@{/home}">N&S Market<span>Online Market Shopping</span></a></h1>
+        <h1><a th:href="@{/home}">N&S Grocery<span>Online Grocery Shopping</span></a></h1>
       </div>
+      <!-- //logo -->
 
 
       <!-- cart -->
       <div class="cart cart box_1">
         <form action="#" method="post" class="last">
+
           <input type="hidden" name="cmd" value="_cart" />
           <input type="hidden" name="display" value="1" />
-          <button class="w3view-cart" type="submit" name="submit" value=""><i
-                  class="fas fa-shopping-bag"></i></button>
+
+          <button class="w3view-cart" type="submit" name="submit" value="">
+            <i class="fas fa-shopping-bag"></i>
+          </button>
+
         </form>
       </div>
+      <!-- //cart -->
 
 
       <!-- search -->
       <div class="header-search position-absolute">
         <div class="search-right mx-lg-2">
           <a href="#search" class="btn search-btn p-0" title="search">
-            <i class="fas fa-search"></i></a>
+            <i class="fas fa-search"></i>
+          </a>
 
           <!-- search popup -->
           <div id="search" class="pop-overlay">
             <div class="popup">
+
               <form action="error.html" method="GET" class="search-box">
                 <input type="search" placeholder="Enter Keyword..." name="search" required="required" autofocus="">
-                <button type="submit" class="btn"><span class="fas fa-search"
-                                                        aria-hidden="true"></span></button>
+                <button type="submit" class="btn">
+                  <span class="fas fa-search" aria-hidden="true"></span>
+                </button>
               </form>
             </div>
+
             <a class="close" href="#close">×</a>
           </div>
+          <!-- //search popup -->
+
         </div>
       </div>
+      <!-- //search -->
 
     </div>
   </div>

@@ -19438,7 +19438,7 @@ h3.title-style span {
   line-height: 45px;
   display: block;
   text-align: center;
-  border: 1px solid var(--border-color-light);
+  /* border: 1px solid var(--border-color-light);*/
   border-radius: 50%;
 }
 
