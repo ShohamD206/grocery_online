@@ -24,7 +24,7 @@ public class GroceryMarketSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.csrf().ignoringAntMatchers("/saveMsg", "/h2-console/**").and().authorizeRequests()
+        http.csrf().ignoringAntMatchers("/sendMsg", "/h2-console/**").and().authorizeRequests()
                 .mvcMatchers("/home").permitAll()
                 .mvcMatchers("/about").permitAll()
                 .mvcMatchers("/contact").permitAll()

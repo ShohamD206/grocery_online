@@ -35,7 +35,7 @@ public class ContactController {
             return "contact.html";
         }
 
-        contactService.createContact(contact);
+        contactService.saveMessageDetails(contact);  // after this, move to service layer.
 
         return "redirect:/contact";
     }
