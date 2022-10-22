@@ -29,6 +29,7 @@ public class GroceryMarketSecurityConfig {
                 .mvcMatchers("/about").permitAll()
                 .mvcMatchers("/contact").permitAll()
                 .mvcMatchers("/dash").authenticated()
+                .mvcMatchers("/displayInquiries").hasRole("ADMIN")   // give permission only to admin role users
                 .mvcMatchers("/h2-console/**").permitAll()
                 .and().formLogin()
                 .loginPage("/login").defaultSuccessUrl("/dash").failureUrl("/login?error=true").permitAll()

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+// The controller class presents the UI layer.
+
 @Controller
 @Slf4j
 public class DashboardController {

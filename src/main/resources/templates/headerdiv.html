@@ -26,6 +26,7 @@
             <li>
               <a class="dropdown-item" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login/Sign-Up</a>
             </li>
+
             <li>
               <a class="dropdown-item" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
             </li>

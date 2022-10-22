@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
+// The controller class presents the UI layer.
+
 @Controller
 @Slf4j
 public class RegistrationController {

@@ -19374,6 +19374,14 @@ a.btn-style-primary:hover {
   background: var(--secondary-color);
 }
 
+.btn-style-3 {
+  background: var(--secondary-color);
+}
+
+.btn-style-3:hover {
+  background: var(--primary-color);
+}
+
 /* //button style */
 
 /* title style */

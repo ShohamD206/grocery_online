@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+// The service class is the connection between the UI layer to Repository layer.
 
 @Service
 @Slf4j
@@ -21,10 +24,23 @@ public class ContactService {
 
         // Data manipulation.
         contact.setCreatedAt(LocalDateTime.now());
-        contact.setCreatedBy(EUserRoles.GUEST.toString());
+        contact.setCreatedBy(EUserRoles.ADMIN.toString());
         contact.setStatus(EInquiryStatus.OPEN.toString());
 
         int queryResult = contactRepository.saveInquiry(contact);
+
+        return (queryResult > 0);
+    }
+
+    public List<Contact> findInquiriesByStatus() {
+
+        List<Contact> inquiriesList = contactRepository.findByStatus(EInquiryStatus.OPEN);
+        return inquiriesList;
+    }
+
+    public boolean updateInquiryStatus(int inquiryId, String updatedBy) {
+
+        int queryResult = contactRepository.updateInquiryStatus(inquiryId, EInquiryStatus.CLOSED, updatedBy);
 
         return (queryResult > 0);
     }
