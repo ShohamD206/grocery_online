@@ -1,2 +1,5 @@
-INSERT INTO `user` (first_name, last_name, user_name, mobile_num)
-    VALUES ('Naor','Cohen','naorCo','0545200650');
+INSERT INTO `user` (`name`, `user_name`, `mobile_num`, `role`)
+    VALUES ('Shoham Dar','shoham','0545700670', 'ADMIN');
+
+INSERT INTO `user` (`name`, `user_name`, `mobile_num`, `role`)
+    VALUES ('Naor Cohen','naor','0545200650', 'ADMIN');

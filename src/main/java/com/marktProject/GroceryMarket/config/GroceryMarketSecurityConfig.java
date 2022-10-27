@@ -24,13 +24,13 @@ public class GroceryMarketSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.csrf().ignoringAntMatchers("/sendMsg", "/h2-console/**").and().authorizeRequests()
+        http.csrf().ignoringAntMatchers("/sendMsg").and().authorizeRequests()
                 .mvcMatchers("/home").permitAll()
                 .mvcMatchers("/about").permitAll()
                 .mvcMatchers("/contact").permitAll()
+                .mvcMatchers("/sendMsg").permitAll()
                 .mvcMatchers("/dash").authenticated()
                 .mvcMatchers("/displayInquiries").hasRole("ADMIN")   // give permission only to admin role users
-                .mvcMatchers("/h2-console/**").permitAll()
                 .and().formLogin()
                 .loginPage("/login").defaultSuccessUrl("/dash").failureUrl("/login?error=true").permitAll()
                 .and()
@@ -38,7 +38,6 @@ public class GroceryMarketSecurityConfig {
                 .invalidateHttpSession(true).permitAll()
                 .and().httpBasic();
 
-        http.headers().frameOptions().disable();
         return http.build();
     }
 
@@ -59,7 +58,7 @@ public class GroceryMarketSecurityConfig {
                 User.withUsername("admin")
                         .passwordEncoder(passwordEncoder() :: encode)
                         .password("1234")
-                        .roles("ADMIN", "USER")
+                        .roles("ADMIN")
                         .build()
         );
 

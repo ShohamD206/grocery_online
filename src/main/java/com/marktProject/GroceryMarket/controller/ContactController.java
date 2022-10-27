@@ -4,7 +4,6 @@ import com.marktProject.GroceryMarket.model.Contact;
 import com.marktProject.GroceryMarket.service.ContactService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,8 +22,12 @@ import java.util.List;
 @Slf4j
 public class ContactController {
 
+    private final ContactService contactService;
+
     @Autowired
-    ContactService contactService;
+    public ContactController(ContactService contactService) {
+        this.contactService = contactService;
+    }
 
     @GetMapping("/contact")
     public String displayContactPage(Model model) {
@@ -34,7 +37,7 @@ public class ContactController {
     }
 
     @PostMapping("/sendMsg")
-    public String sendMessage(Model model, @Valid @ModelAttribute("contact") Contact contact, Errors errors) {
+    public String sendMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors) {
 
         if (errors.hasErrors()) {
             log.info("Contact form validation failed: " + errors);
@@ -60,9 +63,9 @@ public class ContactController {
     }
 
     @GetMapping("/closeInquiry")
-    public String closeInquiry(@RequestParam int id, Authentication authentication) {
+    public String closeInquiry(@RequestParam int id) {
 
-        contactService.updateInquiryStatus(id, authentication.getName());
+        contactService.updateInquiryStatus(id);
         return "redirect:/displayInquiries";
     }
 }

@@ -1,3 +1,7 @@
+CREATE database grocery_online;
+
+USE grocery_online;
+
 CREATE TABLE IF NOT EXISTS `inquiry` (
     `inquiry_id` int AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(100) NOT NULL,
@@ -14,10 +18,10 @@ CREATE TABLE IF NOT EXISTS `inquiry` (
 
 CREATE TABLE IF NOT EXISTS `user` (
     `user_id` int AUTO_INCREMENT NOT NULL,
-    `first_name` varchar(50) NOT NULL,
-    `last_name` varchar(50) NOT NULL,
+    `name` varchar(50) NOT NULL,
     `user_name` varchar(50) NOT NULL,
     `mobile_num` varchar(10) NOT NULL,
+    `role` varchar(10) NOT NULL,
     PRIMARY KEY (`user_id`)
 );
 

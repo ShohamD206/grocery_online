@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 // The service class is the connection between the UI layer to Repository layer.
 
@@ -23,25 +24,29 @@ public class ContactService {
     public boolean saveMessageDetails(Contact contact) {
 
         // Data manipulation.
-        contact.setCreatedAt(LocalDateTime.now());
-        contact.setCreatedBy(EUserRoles.ADMIN.toString());
         contact.setStatus(EInquiryStatus.OPEN.toString());
 
-        int queryResult = contactRepository.saveInquiry(contact);
+        Contact queryResult = contactRepository.save(contact);
 
-        return (queryResult > 0);
+        return (queryResult != null && queryResult.getInquiryId() > 0);
     }
 
     public List<Contact> findInquiriesByStatus() {
 
-        List<Contact> inquiriesList = contactRepository.findByStatus(EInquiryStatus.OPEN);
+        List<Contact> inquiriesList = contactRepository.findByStatus(EInquiryStatus.OPEN.toString());
         return inquiriesList;
     }
 
-    public boolean updateInquiryStatus(int inquiryId, String updatedBy) {
+    public boolean updateInquiryStatus(int inquiryId) {
 
-        int queryResult = contactRepository.updateInquiryStatus(inquiryId, EInquiryStatus.CLOSED, updatedBy);
+        Optional<Contact> contact = contactRepository.findById(inquiryId);
 
-        return (queryResult > 0);
+        contact.ifPresent(contactObj -> {
+            contactObj.setStatus(EInquiryStatus.CLOSED.toString());
+        });
+
+        Contact queryResult = contactRepository.save(contact.get());
+
+        return (queryResult != null && queryResult.getUpdatedBy() != null);
     }
 }

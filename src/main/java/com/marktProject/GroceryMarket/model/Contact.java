@@ -1,15 +1,20 @@
 package com.marktProject.GroceryMarket.model;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 
 @Data
+@Entity
+@Table(name = "inquiry")
 public class Contact extends BaseEntity {
 
+    @Id    // -> Because it's primary key value
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int inquiryId;
     private String status;
 
