@@ -25,5 +25,4 @@ public class Registration {
     @NotBlank(message = "Required password!")
     @Pattern(regexp = "([0-9]{6})", message = "Password must contain 6 characters at least")
     private String password;
-
 }

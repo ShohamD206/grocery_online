@@ -15,7 +15,7 @@ public class Contact extends BaseEntity {
     @Id    // -> Because it's primary key value
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private int inquiryId;
+    private int inquiryId;  // --> Primary Key
     private String status;
 
     @NotBlank(message = "Please enter name!")

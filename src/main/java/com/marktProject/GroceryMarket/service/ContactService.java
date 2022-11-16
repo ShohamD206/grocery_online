@@ -21,8 +21,11 @@ public class ContactService {
     @Autowired
     private ContactRepository contactRepository;
 
-    public boolean saveMessageDetails(Contact contact) {
+    public ContactService() {
+        System.out.println("Contact Service bean was initialized!");
+    }
 
+    public boolean saveMessageDetails(Contact contact) {
         // Data manipulation.
         contact.setStatus(EInquiryStatus.OPEN.toString());
 

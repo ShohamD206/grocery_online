@@ -22,17 +22,18 @@ public class GroceryMarketSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf().ignoringAntMatchers("/sendMsg").and().authorizeRequests()
-                .mvcMatchers("/home").permitAll()
+                .mvcMatchers("/home").authenticated()
                 .mvcMatchers("/about").permitAll()
                 .mvcMatchers("/contact").permitAll()
                 .mvcMatchers("/sendMsg").permitAll()
                 .mvcMatchers("/dash").authenticated()
+                .mvcMatchers("/registration").permitAll()
                 .mvcMatchers("/displayInquiries").hasRole("ADMIN")   // give permission only to admin role users
-                .and().formLogin()
-                .loginPage("/login").defaultSuccessUrl("/dash").failureUrl("/login?error=true").permitAll()
+                .and()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/dash").failureUrl("/login?error=true").permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/login?logout=true")
                 .invalidateHttpSession(true).permitAll()
@@ -41,27 +42,27 @@ public class GroceryMarketSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-
-        List<UserDetails> userDetails = new ArrayList<>();
-
-        userDetails.add(
-                User.withUsername("user")
-                        .passwordEncoder(passwordEncoder() :: encode)
-                        .password("0000")
-                        .roles("USER")
-                        .build()
-        );
-
-        userDetails.add(
-                User.withUsername("admin")
-                        .passwordEncoder(passwordEncoder() :: encode)
-                        .password("1234")
-                        .roles("ADMIN")
-                        .build()
-        );
-
-        return new InMemoryUserDetailsManager(userDetails);
-    }
+//    @Bean
+//    public InMemoryUserDetailsManager userDetailsService() {
+//
+//        List<UserDetails> userDetails = new ArrayList<>();
+//
+//        userDetails.add(
+//                User.withUsername("user")
+//                        .passwordEncoder(passwordEncoder() :: encode)
+//                        .password("0000")
+//                        .roles("USER")
+//                        .build()
+//        );
+//
+//        userDetails.add(
+//                User.withUsername("admin")
+//                        .passwordEncoder(passwordEncoder() :: encode)
+//                        .password("1234")
+//                        .roles("ADMIN")
+//                        .build()
+//        );
+//
+//        return new InMemoryUserDetailsManager(userDetails);
+//    }
 }

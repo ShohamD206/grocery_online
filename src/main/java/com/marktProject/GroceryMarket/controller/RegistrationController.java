@@ -1,9 +1,10 @@
 package com.marktProject.GroceryMarket.controller;
 
 import com.marktProject.GroceryMarket.model.Registration;
+import com.marktProject.GroceryMarket.model.User;
+import com.marktProject.GroceryMarket.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -19,28 +20,21 @@ import javax.validation.Valid;
 @Slf4j
 public class RegistrationController {
 
-    private static Logger logger = LoggerFactory.getLogger(RegistrationController.class);
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/registration")
     public String displayRegistrationPage(Model model) {
-
-        model.addAttribute("registration", new Registration());
+        model.addAttribute("user", new User());
         return "registration.html";
     }
 
     @PostMapping("/createUser")
-    public String registerUser(Model model, @Valid @ModelAttribute("registration") Registration registration, Errors errors) {
+    public String registerUser(Model model, @Valid @ModelAttribute("user") User user, Errors errors) {
 
-        if (errors.hasErrors()) {
-            log.info("registration form validation failed : " + errors);
+        if (errors.hasErrors())
             return "registration.html";
-        }
 
-        log.info(registration.toString());
-
-        model.addAttribute("success", true);
-        model.addAttribute("email", registration.getEmail());
-
-        return "registration.html";
+        return "redirect:/login?register=true";
     }
 }

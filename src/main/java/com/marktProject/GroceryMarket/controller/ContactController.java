@@ -37,7 +37,7 @@ public class ContactController {
     }
 
     @PostMapping("/sendMsg")
-    public String sendMessage(@Valid @ModelAttribute("contact") Contact contact, Errors errors) {
+    public String sendMessage(Model model, @Valid @ModelAttribute("contact") Contact contact, Errors errors) {
 
         if (errors.hasErrors()) {
             log.info("Contact form validation failed: " + errors);

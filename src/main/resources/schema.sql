@@ -19,9 +19,9 @@ CREATE TABLE IF NOT EXISTS `inquiry` (
 CREATE TABLE IF NOT EXISTS `user` (
     `user_id` int AUTO_INCREMENT NOT NULL,
     `name` varchar(50) NOT NULL,
-    `user_name` varchar(50) NOT NULL,
+    `email` varchar(50) NOT NULL,
+    `password` varchar(12) NOT NULL,
     `mobile_num` varchar(10) NOT NULL,
-    `role` varchar(10) NOT NULL,
     PRIMARY KEY (`user_id`)
 );
 

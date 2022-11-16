@@ -14,227 +14,235 @@
 
 <body>
 
-<!--  headers	-->
+  <!--  headers	-->
 
-<div th:replace="headerdiv :: div"></div>
-<div th:replace="header :: header"></div>
+  <div th:replace="headerdiv :: div"></div>
+  <div th:replace="header :: header"></div>
 
-<!-- //headers	-->
+  <!-- //headers	-->
 
 
 <!-- Registration -->
 
-<section class="text-center text-lg-start">
-  <style>
-    .cascading-right {
-      margin-right: -50px;
-    }
-
-    @media (max-width: 991.98px) {
+  <section class="text-center text-lg-start">
+    <style>
       .cascading-right {
-        margin-right: 0;
+        margin-right: -50px;
       }
-    }
-  </style>
 
-  <!-- Jumbotron -->
-  <div class="container py-4" style="background-color: #4169E1;">
-    <div class="row g-0 align-items-center">
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <div class="card cascading-right" style="
-            background: hsla(0, 0%, 100%, 0.55);
-            backdrop-filter: blur(30px);
-            ">
-          <div class="card-body p-5 shadow-5 text-center">
-            <h2 class="fw-bold mb-5">REGISTER NOW!</h2>
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
 
-            <ul>
-              <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('registration.*')}" th:text="${error}"></li>
-            </ul>
+    <!-- Jumbotron -->
+    <div class="container py-4" style="background-color: #4169E1;">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right" style="background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px);">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">REGISTER NOW!</h2>
 
-            <p th:if="${success}==true" th:text="'New user for ' + ${email} + ' was created successfully!'"></p>
+              <ul>
+                <li class="alert alert-danger"
+                    role="alert"
+                    th:each="error : ${#fields.errors('user.*')}"
+                    th:text="${error}"></li>
+              </ul>
 
-            <form method="post" th:object="${registration}" action="/createUser" th:if="${success} != true">
-              <!-- 2 column grid layout with text inputs for the first and last names -->
-              <div class="form-outline">
-                <input type="text" th:field="*{name}" class="form-control" placeholder="Full name"/>
-              </div>
+              <p th:if="${success}==true" th:text="'New user for ' + ${email} + ' was created successfully!'"></p>
 
-              <br>
+              <form method="post" th:action="@{/createUser}" th:object="${user}"  th:if="${success} != true">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="form-outline">
+                  <input type="text" th:field="*{name}" class="form-control form-control-lg" placeholder="Full name"/>
+                </div>
 
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" th:field="*{email}" class="form-control" placeholder="Email address"/>
-              </div>
+                <br>
 
-              <!-- Phone input -->
-              <div class="form-outline mb-4">
-                <input type="tel" th:field="*{phone}" class="form-control" placeholder="Phone number"/>
-              </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" th:field="*{email}" class="form-control form-control-lg" placeholder="Email address"/>
+                </div>
 
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input type="password" th:field="*{password}" class="form-control" placeholder="Password"/>
-              </div>
+                <div class="form-outline mb-4">
+                  <input type="text" th:field="*{confirmEmail}" placeholder="Confirm Email" class="form-control form-control-lg" />
+                </div>
 
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-                <label class="form-check-label" for="form2Example33">
-                  Subscribe to our newsletter
-                </label>
-              </div>
+                <!-- Phone input -->
+                <div class="form-outline mb-4">
+                  <input type="tel" th:field="*{mobileNum}" class="form-control form-control-lg" placeholder="Phone Number"/>
+                </div>
 
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4">
-                Sign up
-              </button>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" th:field="*{password}" class="form-control form-control-lg" placeholder="Password"/>
+                </div>
 
-              <!-- Register buttons -->
-              <div class="text-center">
-                <p>or sign up with:</p>
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-facebook-f"></i>
+                <div class="form-outline mb-4">
+                  <input type="password" th:field="*{confirmPassword}" placeholder="Confirm Password" class="form-control form-control-lg" />
+                </div>
+
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-center mb-4">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                  <label class="form-check-label" for="form2Example33">
+                    Subscribe to our newsletter
+                  </label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                  Sign up
                 </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-google"></i>
-                </button>
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>or sign up with:</p>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-twitter"></i>
-                </button>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                  </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                  <i class="fab fa-github"></i>
-                </button>
-              </div>
-            </form>
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4"
-             alt="" />
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4"
+               alt="" />
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Jumbotron -->
-</section>
+    <!-- Jumbotron -->
+  </section>
 
-<!-- //Registration -->
+  <!-- //Registration -->
 
 
-<!-- footer -->
+  <!-- footer -->
 
-<div th:replace="footer :: footer"></div>
+  <div th:replace="footer :: footer"></div>
 
-<!-- //footer -->
+  <!-- //footer -->
 
-<!-- Js scripts -->
-<!-- move top -->
-<button onclick="topFunction()" id="movetop" title="Go to top">
-  <span class="fas fa-level-up-alt" aria-hidden="true"></span>
-</button>
-<script>
-		// When the user scrolls down 20px from the top of the document, show the button
-		window.onscroll = function () {
-			scrollFunction()
-		};
+  <!-- Js scripts -->
+  <!-- move top -->
+  <button onclick="topFunction()" id="movetop" title="Go to top">
+    <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+  </button>
+  <script>
+          // When the user scrolls down 20px from the top of the document, show the button
+          window.onscroll = function () {
+              scrollFunction()
+          };
 
-		function scrollFunction() {
-			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-				document.getElementById("movetop").style.display = "block";
-			} else {
-				document.getElementById("movetop").style.display = "none";
-			}
-		}
+          function scrollFunction() {
+              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                  document.getElementById("movetop").style.display = "block";
+              } else {
+                  document.getElementById("movetop").style.display = "none";
+              }
+          }
 
-		// When the user clicks on the button, scroll to the top of the document
-		function topFunction() {
-			document.body.scrollTop = 0;
-			document.documentElement.scrollTop = 0;
-		}
-	</script>
-<!-- //move top -->
+          // When the user clicks on the button, scroll to the top of the document
+          function topFunction() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+          }
+      </script>
+  <!-- //move top -->
 
-<!-- common jquery plugin -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<!-- //common jquery plugin -->
+  <!-- common jquery plugin -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <!-- //common jquery plugin -->
 
-<!-- cart-js -->
-<script src="js/minicart.js"></script>
-<script>
-		w3ls.render();
+  <!-- cart-js -->
+  <script src="js/minicart.js"></script>
+  <script>
+          w3ls.render();
 
-		w3ls.cart.on('w3sb_checkout', function (evt) {
-			var items, len, i;
+          w3ls.cart.on('w3sb_checkout', function (evt) {
+              var items, len, i;
 
-			if (this.subtotal() > 0) {
-				items = this.items();
+              if (this.subtotal() > 0) {
+                  items = this.items();
 
-				for (i = 0, len = items.length; i < len; i++) {}
-			}
-		});
-	</script>
-<!-- //cart-js -->
+                  for (i = 0, len = items.length; i < len; i++) {}
+              }
+          });
+      </script>
+  <!-- //cart-js -->
 
-<!-- modal script -->
-<script>
-		var myModalEl = document.getElementById('myModal')
-		myModalEl.addEventListener('hidden.bs.modal', function (event) {
-			// do something...
-		})
-	</script>
-<!-- //modal script -->
+  <!-- modal script -->
+  <script>
+          var myModalEl = document.getElementById('myModal')
+          myModalEl.addEventListener('hidden.bs.modal', function (event) {
+              // do something...
+          })
+      </script>
+  <!-- //modal script -->
 
-<!-- theme switch js (light and dark)-->
-<script src="js/theme-change.js"></script>
-<!-- //theme switch js (light and dark)-->
+  <!-- theme switch js (light and dark)-->
+  <script src="js/theme-change.js"></script>
+  <!-- //theme switch js (light and dark)-->
 
-<!-- MENU-JS -->
-<script>
-		$(window).on("scroll", function () {
-			var scroll = $(window).scrollTop();
+  <!-- MENU-JS -->
+  <script>
+          $(window).on("scroll", function () {
+              var scroll = $(window).scrollTop();
 
-			if (scroll >= 80) {
-				$("#site-header").addClass("nav-fixed");
-			} else {
-				$("#site-header").removeClass("nav-fixed");
-			}
-		});
+              if (scroll >= 80) {
+                  $("#site-header").addClass("nav-fixed");
+              } else {
+                  $("#site-header").removeClass("nav-fixed");
+              }
+          });
 
-		//Main navigation Active Class Add Remove
-		$(".navbar-toggler").on("click", function () {
-			$("header").toggleClass("active");
-		});
-		$(document).on("ready", function () {
-			if ($(window).width() > 991) {
-				$("header").removeClass("active");
-			}
-			$(window).on("resize", function () {
-				if ($(window).width() > 991) {
-					$("header").removeClass("active");
-				}
-			});
-		});
-	</script>
-<!-- //MENU-JS -->
+          //Main navigation Active Class Add Remove
+          $(".navbar-toggler").on("click", function () {
+              $("header").toggleClass("active");
+          });
+          $(document).on("ready", function () {
+              if ($(window).width() > 991) {
+                  $("header").removeClass("active");
+              }
+              $(window).on("resize", function () {
+                  if ($(window).width() > 991) {
+                      $("header").removeClass("active");
+                  }
+              });
+          });
+      </script>
+  <!-- //MENU-JS -->
 
-<!-- disable body scroll which navbar is in active -->
-<script>
-		$(function () {
-			$('.navbar-toggler').click(function () {
-				$('body').toggleClass('noscroll');
-			})
-		});
-	</script>
-<!-- //disable body scroll which navbar is in active -->
+  <!-- disable body scroll which navbar is in active -->
+  <script>
+          $(function () {
+              $('.navbar-toggler').click(function () {
+                  $('body').toggleClass('noscroll');
+              })
+          });
+      </script>
+  <!-- //disable body scroll which navbar is in active -->
 
-<!-- bootstrap -->
-<script src="js/bootstrap.min.js"></script>
-<!-- //bootstrap -->
-<!-- //Js scripts -->
+  <!-- bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- //bootstrap -->
+  <!-- //Js scripts -->
 </body>
 </html>

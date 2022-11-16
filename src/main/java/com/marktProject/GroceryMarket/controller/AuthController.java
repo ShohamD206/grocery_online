@@ -21,13 +21,18 @@ public class AuthController {
     @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
     public String displayLoginPage(@RequestParam(required = false) String error,
                                    @RequestParam(required = false) String logout,
+                                   @RequestParam(required = false) String register,
                                    Model model) {
 
         if (error != null)
-            message = "Password OR Username is incorrect";
+            message = "Password OR Username is incorrect!";
 
-        if (logout != null)
-            message = "You have been successfully Logged out";
+        else if (logout != null)
+            message = "You have been successfully Logged out!";
+
+        else if (register != null)
+            message = "Registration process was done successfully!";
+
 
         model.addAttribute("message", message);
         return "login.html";
