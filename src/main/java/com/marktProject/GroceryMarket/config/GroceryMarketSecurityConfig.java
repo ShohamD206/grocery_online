@@ -42,27 +42,27 @@ public class GroceryMarketSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-
-        List<UserDetails> userDetails = new ArrayList<>();
-
-        userDetails.add(
-                User.withUsername("user")
-                        .passwordEncoder(passwordEncoder() :: encode)
-                        .password("0000")
-                        .roles("USER")
-                        .build()
-        );
-
-        userDetails.add(
-                User.withUsername("admin")
-                        .passwordEncoder(passwordEncoder() :: encode)
-                        .password("1234")
-                        .roles("ADMIN")
-                        .build()
-        );
-
-        return new InMemoryUserDetailsManager(userDetails);
-    }
+//    @Bean
+//    public InMemoryUserDetailsManager userDetailsService() {
+//
+//        List<UserDetails> userDetails = new ArrayList<>();
+//
+//        userDetails.add(
+//                User.withUsername("user")
+//                        .passwordEncoder(passwordEncoder() :: encode)
+//                        .password("0000")
+//                        .roles("USER")
+//                        .build()
+//        );
+//
+//        userDetails.add(
+//                User.withUsername("admin")
+//                        .passwordEncoder(passwordEncoder() :: encode)
+//                        .password("1234")
+//                        .roles("ADMIN")
+//                        .build()
+//        );
+//
+//        return new InMemoryUserDetailsManager(userDetails);
+//    }
 }

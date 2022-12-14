@@ -54,18 +54,13 @@
 
               <p th:if="${success}==true" th:text="'New user for ' + ${email} + ' was created successfully!'"></p>
 
-              <form method="post" th:action="@{/createUser}" th:object="${user}">
+              <form method="post" th:action="@{/createUser}" th:object="${user}"  th:if="${success} != true">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="form-outline">
                   <input type="text" th:field="*{name}" class="form-control form-control-lg" placeholder="Full name"/>
                 </div>
 
                 <br>
-
-                <!-- Phone input -->
-                <div class="form-outline mb-4">
-                  <input type="tel" th:field="*{mobileNum}" class="form-control form-control-lg" placeholder="Phone Number"/>
-                </div>
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
@@ -74,6 +69,11 @@
 
                 <div class="form-outline mb-4">
                   <input type="text" th:field="*{confirmEmail}" placeholder="Confirm Email" class="form-control form-control-lg" />
+                </div>
+
+                <!-- Phone input -->
+                <div class="form-outline mb-4">
+                  <input type="tel" th:field="*{mobileNum}" class="form-control form-control-lg" placeholder="Phone Number"/>
                 </div>
 
                 <!-- Password input -->

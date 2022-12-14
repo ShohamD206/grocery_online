@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 @Data
 @Entity
 @FieldsMatch.List({
-        @FieldsMatch(fieldOne = "email", fieldTwo = "confirmEmail", message = "Emails do not match!"),
-        @FieldsMatch(fieldOne = "password", fieldTwo = "confirmPassword", message = "Passwords do not match!")
+        @FieldsMatch(fieldOne = "password", fieldTwo = "confirmPassword", message = "Passwords do not match!"),
+        @FieldsMatch(fieldOne = "email", fieldTwo = "confirmEmail", message = "Emails do not match!")
 })
 public class User extends BaseEntity {
 
@@ -37,7 +37,7 @@ public class User extends BaseEntity {
     private String email;
 
     @NotBlank(message = "Required Confirm Email!")
-    @Transient                                                           // ignore field for no duplication on database
+    @Transient
     private String confirmEmail;
 
     @NotBlank(message = "Required Password!")
