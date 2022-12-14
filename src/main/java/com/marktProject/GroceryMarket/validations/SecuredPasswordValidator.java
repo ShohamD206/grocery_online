@@ -19,11 +19,11 @@ public class SecuredPasswordValidator implements ConstraintValidator<SecuredPass
     public boolean isValid(String password, ConstraintValidatorContext context) {
 
         PasswordValidator validator = new PasswordValidator(Arrays.asList(
-                new LengthRule(8,30),
-                new CharacterRule(EnglishCharacterData.UpperCase, 1),
-                new CharacterRule(EnglishCharacterData.LowerCase, 1),
-                new CharacterRule(EnglishCharacterData.Digit, 1),
-                new CharacterRule(EnglishCharacterData.Special, 1),
+                new LengthRule(8,30),   // min 8, max 30
+                new CharacterRule(EnglishCharacterData.UpperCase, 1),   // at least 1 uppercase
+                new CharacterRule(EnglishCharacterData.LowerCase, 1),   // at least 1 lowercase
+                new CharacterRule(EnglishCharacterData.Digit, 1),       // at least 1 number
+                new CharacterRule(EnglishCharacterData.Special, 1),     // at least 1 special character
                 new WhitespaceRule()
         ));
 
@@ -35,7 +35,7 @@ public class SecuredPasswordValidator implements ConstraintValidator<SecuredPass
         List<String> messages = validator.getMessages(result);
 
         String errors = messages.stream()
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(" "));
 
         context.buildConstraintViolationWithTemplate(errors)
                 .addConstraintViolation()

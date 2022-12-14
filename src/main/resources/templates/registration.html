@@ -54,13 +54,18 @@
 
               <p th:if="${success}==true" th:text="'New user for ' + ${email} + ' was created successfully!'"></p>
 
-              <form method="post" th:action="@{/createUser}" th:object="${user}"  th:if="${success} != true">
+              <form method="post" th:action="@{/createUser}" th:object="${user}">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="form-outline">
                   <input type="text" th:field="*{name}" class="form-control form-control-lg" placeholder="Full name"/>
                 </div>
 
                 <br>
+
+                <!-- Phone input -->
+                <div class="form-outline mb-4">
+                  <input type="tel" th:field="*{mobileNum}" class="form-control form-control-lg" placeholder="Phone Number"/>
+                </div>
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
@@ -69,11 +74,6 @@
 
                 <div class="form-outline mb-4">
                   <input type="text" th:field="*{confirmEmail}" placeholder="Confirm Email" class="form-control form-control-lg" />
-                </div>
-
-                <!-- Phone input -->
-                <div class="form-outline mb-4">
-                  <input type="tel" th:field="*{mobileNum}" class="form-control form-control-lg" placeholder="Phone Number"/>
                 </div>
 
                 <!-- Password input -->
@@ -86,12 +86,12 @@
                 </div>
 
                 <!-- Checkbox -->
-<!--                <div class="form-check d-flex justify-content-center mb-4">-->
-<!--                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />-->
-<!--                  <label class="form-check-label" for="form2Example33">-->
-<!--                    Subscribe to our newsletter-->
-<!--                  </label>-->
-<!--                </div>-->
+                <div class="form-check d-flex justify-content-center mb-4">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                  <label class="form-check-label" for="form2Example33">
+                    Subscribe to our newsletter
+                  </label>
+                </div>
 
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4">
